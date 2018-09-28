@@ -9,6 +9,11 @@ import (
 )
 
 func watchFolder(path string) {
+	if isIgnoredFolder(path) {
+		return
+	}
+
+
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		fatal(err)
